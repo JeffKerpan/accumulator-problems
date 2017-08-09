@@ -3,8 +3,8 @@
 SAMPLE
 ----------------------------------------
 
-Challenge: Write function named test that returns the string "This Works!". 
-Solution: This one has already been complete for you. 
+Challenge: Write function named test that returns the string "This Works!".
+Solution: This one has already been complete for you.
 
 */
 
@@ -26,10 +26,13 @@ Example: if you pass it [1,2,3] then it should return 6 (which is 1 + 2 + 3)
 */
 
 
-
-
-
-
+function sum(array) {
+  var results = 0;
+  for (var i=0; i<array.length; i++){
+    results += array[i];
+  }
+  return results;
+}
 
 
 
@@ -43,12 +46,13 @@ Write function named doubleNumbers that will take an array of numbers and return
 Example: if you pass it [1,2,3] then it should return [2,4,6]
 */
 
-
-
-
-
-
-
+function doubleNumbers(array) {
+  var results = [];
+  for (var i=0; i<array.length; i++) {
+    results.push(array[i]*2);
+  }
+  return results;
+}
 
 
 /*
@@ -65,11 +69,13 @@ Examples:
 - if you call multiplyNumbers([1,2,3], 5) you'd get [5,10,15]
 */
 
-
-
-
-
-
+function multiplyNumbers(array, times) {
+  var results = [];
+  for (var i=0; i<array.length; i++) {
+    results.push(array[i]*times);
+  }
+  return results;
+}
 
 
 
@@ -83,12 +89,13 @@ Write function named doubleLetters that will take a string and double every lett
 Example: if you pass it "abc" then it should return "aabbcc"
 */
 
-
-
-
-
-
-
+function doubleLetters(str) {
+  var string = '';
+  for (var i=0; i<str.length; i++) {
+    string += (str[i] + str[i]);
+  }
+  return string;
+}
 
 
 
@@ -104,13 +111,14 @@ Example: if you pass it ["a", "b", "c"] and ["d", "e", "f"] then it should retur
 NOTE: you can assume each input will be the same length
 */
 
-
-
-
-
-
-
-
+function interleave(arr1, arr2) {
+  var results = [];
+  for (var i = 0; i < arr1.length; i++) {
+    results.push(arr1[i], arr2[i]);
+    console.log(results);
+  }
+  return results;
+}
 
 
 
@@ -124,9 +132,13 @@ Write function named createRange that will take a number and a default value and
 Example: if you pass it 4 and "Hello" then it should return ["Hello", "Hello", "Hello", "Hello"]
 */
 
-
-
-
+function createRange (num, string) {
+  var results = [];
+  for (var i=0; i<num; i++) {
+    results.push(string);
+  }
+  return results;
+}
 
 
 
@@ -143,12 +155,16 @@ Example:
 If you pass it ["quick", "brown", "fox"] then it should return { "quick": 0, "brown": 1, "fox": 2 }
 */
 
+function flipArray(array) {
+ var results = {};
+ for (var i = 0; i < array.length; i++) {
+   results[array[i]] = i;
+ }
+return results;
+}
 
-
-
-
-
-
+// results[array[i]] = i
+//  same as object[key] = value
 
 /*
 ----------------------------------------
@@ -163,10 +179,13 @@ If you pass it [[2014, "Horse"], [2015, "Sheep"]] then it should return { 2014: 
 
 */
 
-
-
-
-
+function arraysToObject(array) {
+  var results = {};
+  for (var i=0; i<array.length; i++) {
+    results[array[i][0]] = array[i][1];
+  }
+  return results;
+}
 
 
 
@@ -183,16 +202,13 @@ Example:
 If you pass it "hello" then it should return "olleh"
 */
 
-
-
-
-
-
-
-
-
-
-
+function reverseString(string) {
+  var results = '';
+  for (var i = 0; i <string.length; i++) {
+    results = string[i] + results;
+  }
+  return results;
+}
 
 /*
 ----------------------------------------
@@ -208,12 +224,13 @@ If you pass it "yay" then it should return false because it's odd
 If you pass it "heehaw" then it should return false because "hee" doesn't equal "haw"
 */
 
-
-
-
-
-
-
+function repeats (string) {
+  if (string.length % 2 !== 0) {
+    return false;
+  }
+  let half = string.length / 2;
+  return string.substr(0, half) == string.substr(half, string.length - half);
+}
 
 /*
 ----------------------------------------
@@ -227,9 +244,15 @@ Example:
 If you pass it "abcdef" then it should return "ace" because those represent every other letter
 */
 
-
-
-
+function everyOther(string) {
+  results = '';
+  for (var i = 0; i<string.length; i++){
+    if(i%2 === 0) {
+      results += string[i];
+    }
+  }
+  return results;
+}
 
 
 
@@ -247,12 +270,15 @@ If you pass "aaa" it should return true
 If you pass "aba" it should return false
 */
 
-
-
-
-
-
-
+function allEqual(string) {
+  var results = string[0];
+  for (var i=0; i<string.length; i++) {
+    if (string[i] !== results) {
+      return false;
+    }
+  }
+  return true;
+}
 
 /*
 ----------------------------------------
@@ -267,12 +293,13 @@ If you pass "45" it should return 9
 If you pass "246" it should return 10
 */
 
-
-
-
-
-
-
+function sumLetters(string) {
+  var results = 0;
+  for(var i=0; i<string.length; i++) {
+    results += parseInt(string[i]);
+  }
+  return results;
+}
 
 /*
 ----------------------------------------
@@ -286,14 +313,16 @@ Example:
 If you pass "you" it should return 2
 */
 
-
-
-
-
-
-
-
-
+function countVowels(string) {
+  var results = 0;
+  var vowels = ['a', 'e', 'i', 'o', 'u'];
+  for (var i = 0; i<string.length; i++) {
+    if (vowels.includes(string[i])) {
+      results += 1;
+    }
+  }
+  return results;
+}
 
 /*
 ----------------------------------------
@@ -309,7 +338,13 @@ If you pass "you" it should return ["y", "o", "u"]
 NOTE: do not use the builtin `split` method
 */
 
-
+function split(string) {
+  var results = [];
+  for(var i=0; i<string.length; i++) {
+    results.push(string[i]);
+  }
+  return results;
+}
 
 
 
@@ -330,12 +365,13 @@ Example:
 If you pass "Hello" it should return [ 72, 101, 108, 108, 111 ]
 */
 
-
-
-
-
-
-
+function getCodePoints(string) {
+  var results = [];
+  for(var i=0; i<string.length; i++) {
+    results.push(string.codePointAt(i));
+  }
+  return results;
+}
 
 /*
 ----------------------------------------
@@ -350,12 +386,13 @@ If you pass "Yo" it should return {Y: 0, o: 1}
 If you pass "Hello" it should return {H: 0, e: 1, l: 3, o: 4}
 */
 
-
-
-
-
-
-
+function letterMap(string) {
+  var results = {};
+  for(var i=0; i<string.length; i++) {
+    results[string[i]] = i;
+  }
+  return results;
+}
 
 /*
 ----------------------------------------
@@ -370,13 +407,18 @@ If you pass "Yo" it should return {Y: 1, o: 1}
 If you pass "Hello" it should return {"H": 1, "e": 1, "l": 2, "o": 1}
 */
 
-
-
-
-
-
-
-
+function letterCount(string) {
+  let count = {};
+  for (let i = 0; i < string.length; i++) {
+    let char = string.charAt(i);
+    if (count[char]) {
+      count[char] ++;
+    } else {
+      count[char] = 1;
+    }
+  }
+  return count;
+}
 
 /*
 ----------------------------------------
@@ -391,14 +433,17 @@ If you pass 0,2 it should return false because the only number between 0 and 2 i
 If you pass 0,6 it should return true because between 0 and six (the numbers 1,2,3,4,5) there are three odds - 1, 3 and 5
 */
 
-
-
-
-
-
-
-
-
+function threeOdds(num1, num2) {
+  if (num1 === num2) {
+    return false;
+  } else {
+    for (let i=num1; i<num2 +1; i++) {
+      if (i % 2 !== 0) {
+        return true;
+      }
+    }
+  }
+}
 
 /*
 ----------------------------------------
@@ -794,4 +839,4 @@ If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 
 
 
-// 
+//
